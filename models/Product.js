@@ -1,27 +1,19 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Review extends Model {}
+class Product extends Model {}
 
-Review.init({
+Product.init({
     // add properites here, ex:
-    body: {
+    name: {
          type: DataTypes.STRING,
          allowNull:false,
          validate:{
-            len:[1,2000]
+            len:[1,60]
          }
-    },
-    rating: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate:{
-            max:5,
-            min:1
-        }
     }
 },{
     sequelize
 });
 
-module.exports=Review
+module.exports=Product
