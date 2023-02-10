@@ -35,14 +35,17 @@ User.init({
         validate:{
            isEmail:true
         }
-   },
-   password:{
+    },
+    password:{
        type:DataTypes.STRING,
        allowNull:false,
        validate:{
            len:[8,256]
        }
-   }
+    },
+    showname: {
+        type: DataTypes.BOOLEAN
+    }
 },{
     sequelize,
     hooks:{
