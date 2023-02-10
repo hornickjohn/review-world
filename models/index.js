@@ -18,6 +18,16 @@ Review.belongsTo(User,{
 });
 User.hasMany(Product);
 
+//setup usercategory junction
+User.belongsToMany(Category, {
+    through: UserCategory,
+    foreignKey: 'user_id'
+});
+Category.belongsToMany(User, {
+    through: UserCategory,
+    foreignKey: 'category_id'
+});
+
 module.exports = {
     User,
     Review,
