@@ -13,4 +13,8 @@ router.use("/api/review",reviewRoutes);
 const frontEndRoutes = require('./frontEndController');
 router.use("/",frontEndRoutes);
 
+router.get("*",(req,res) => {
+    res.redirect("/");
+});
+
 module.exports = router;
