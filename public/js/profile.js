@@ -1,12 +1,12 @@
-document.querySelector("#new-chirp-form").addEventListener("submit",e=>{
+document.querySelector("#new-user-form").addEventListener("submit",e=>{
     e.preventDefault();
-    const chripObj = {
-        chirp:document.querySelector("#chirp-input").value
+    const userObj = {
+        user:document.querySelector("#user-input").value
     }
-    console.log(chripObj)
-    fetch("/api/chirps",{
+    console.log(userObj)
+    fetch("/api/review",{
         method:"POST",
-        body:JSON.stringify(chripObj),
+        body:JSON.stringify(userObj),
         headers:{
             "Content-Type":"application/json"
         }

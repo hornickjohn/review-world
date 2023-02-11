@@ -33,10 +33,12 @@ router.post("/",(req,res)=>{
     console.log(req.body);
    User.create({
     email:req.body.email,
-    password:req.body.password
+    password:req.body.password,
+    username:req.body.username
    }).then(userData=>{
     req.session.userId = userData.id;
     req.session.userEmail = userData.email;
+    req.session.loggedIn = true;
     res.json(userData)
    }).catch(err=>{
     console.log(err);
@@ -55,6 +57,7 @@ router.post("/login",(req,res)=>{
         if(bcrypt.compareSync(req.body.password,userData.password)){
             req.session.userId = userData.id;
             req.session.userEmail = userData.email;
+            req.session.loggedIn = true;
             return res.json(userData)
         } else {
             return res.status(401).json({msg:"incorrect email or password"})

@@ -1,5 +1,4 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 const{ User, Category, Review} = require ('../models');
 
 router.get('/', (req, res) =>{
@@ -54,4 +53,4 @@ router.delete('/review', (req,res)=>{
     })
 })
 
-module.export = router;
+module.exports = router;

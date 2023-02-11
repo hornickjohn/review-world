@@ -2,8 +2,15 @@ const express = require('express');
 const router = express.Router();
 const {Category,User,Review,Product} = require('../models');
 
-router.get("/",(req,res)=>{
-    res.render("home");
+router.get("/", async(req,res)=>{
+    if(!ensureLogin (req, res)) return;
+    const user = await User.findOne({
+        where: { id: req.session.userId }
+      });
+      const userData = user.get({ plain: true });
+      userData.loggedIn = req.session.loggedIn;
+
+    res.render("home", userData);
 });
 router.get("/login",(req,res)=>{
     res.render("login");
@@ -12,6 +19,7 @@ router.get("/signup",(req,res)=>{
     res.render("signup");
 });
 router.get("/profile/:username",(req,res)=>{
+    if(!ensureLogin (req, res)) return;
     User.findOne({
         where:{
             username: req.params.username
@@ -29,15 +37,34 @@ router.get("/profile/:username",(req,res)=>{
         res.status(500).json('Server error.');
     });
 });
+
 router.get("/account",(req,res)=>{
-    if(!req.session.userId) {
-        res.redirect("/login");
-    } else {
-        res.render("updateuser");
-    }
+    if(!ensureLogin (req, res)) return;
+    res.render("updateuser");
 });
+
 router.get("/search",(req,res)=>{
+    if(!ensureLogin (req, res)) return;
     res.render("search");
 });
+
+router.get("/logout", (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.redirect("/login");
+      });
+    } else {
+        res.redirect("/login");
+    }
+  });
+
+
+function ensureLogin(req, res){
+    if (!req.session.loggedIn) {
+        res.redirect("/login");
+        return false;
+    }
+    return true;
+} 
 
 module.exports = router;
