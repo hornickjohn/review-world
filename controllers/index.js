@@ -7,6 +7,9 @@ router.use("/api/users",userRoutes);
 const categoryRoutes = require('./categoryController');
 router.use("/api/category",categoryRoutes);
 
+const productRoutes = require('./productController');
+router.use("/api/product",productRoutes);
+
 const reviewRoutes = require('./reviewController');
 router.use("/api/review",reviewRoutes);
 

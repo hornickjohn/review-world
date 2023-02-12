@@ -1,0 +1,33 @@
+
+<form id="reviewForm">
+    Product:
+    <select id="product" placeholder="Select one">
+        <option></option>
+{{#each productData}}
+        <option value="{{id}}">{{name}}</option>
+{{/each}}
+    </select>
+    Rating:
+    <select id="rating" placeholder="Select one">
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+    </select>
+    Review:
+    <input type="text" id="reviewText"  placeholder="review">
+    <button>Submit Review</button>
+</form>
+<h1>Reviews</h1>
+
+{{#each reviewData}}
+<b>Product:</b> {{product.name}}
+<b>Rating:</b> {{rating}}
+<b>Category:</b> {{product.category.name}}
+<br>
+"{{reviewText}}""
+<hr>
+{{/each}}
+
+<script src="/js/review.js"></script>

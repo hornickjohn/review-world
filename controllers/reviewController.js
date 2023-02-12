@@ -20,7 +20,9 @@ router.get('/review', (req, res)=>{
 });
 
 router.post('/',(req,res)=>{
-    Review.create(req.body).then((data)=>{
+  if (!ensureLogin(req, res)) return;
+  req.body.user_id = req.session.userId;
+  Review.create(req.body).then((data)=>{
         return res.status(200).json(data);
     }).catch(err=>{
         console.log(err)
@@ -53,4 +55,12 @@ router.delete('/review', (req,res)=>{
     })
 })
 
+function ensureLogin(req, res) {
+    if (!req.session.loggedIn) {
+      res.redirect("/login");
+      return false;
+    }
+    return true;
+  }
+  
 module.exports = router;

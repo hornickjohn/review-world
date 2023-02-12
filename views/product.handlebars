@@ -1,0 +1,21 @@
+
+<form id="productForm">
+    New Product Name:
+    <input type="text" id="name"  placeholder="product name">
+    Category:
+       <select id="category" placeholder="Select one">
+        <option></option>
+{{#each categoryData}}
+        <option value="{{id}}">{{name}}</option>
+{{/each}}
+    </select>
+    <button>Create Product</button>
+</form>
+<h1>Products</h1>
+
+{{#each productData}}
+Product: {{name}} Category: {{category.name}} <br>
+<br>
+{{/each}}
+
+<script src="/js/product.js"></script>

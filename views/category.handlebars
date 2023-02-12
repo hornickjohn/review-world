@@ -1,0 +1,15 @@
+
+<form id="categoryForm">
+    
+    New Category Name:
+    <input type="text" id="name"  placeholder="category name">
+    <button>Create Category</button>
+</form>
+<h1>Categories</h1>
+
+{{#each categoryData}}
+{{name}}
+<br>
+{{/each}}
+
+<script src="/js/category.js"></script>
