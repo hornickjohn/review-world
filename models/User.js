@@ -5,6 +5,13 @@ const bcrypt = require('bcrypt');
 class User extends Model {}
 
 User.init({
+    id: {
+        type:DataTypes.INTEGER,
+        allowNull:false,
+        primaryKey:true,
+        autoIncrement:true
+      },
+      
     first_name: {
         type:DataTypes.STRING,
         validate:{
@@ -48,6 +55,9 @@ User.init({
     }
 },{
     sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "user",
     hooks:{
         beforeCreate:userObj=>{
             userObj.password = bcrypt.hashSync(userObj.password,4);
