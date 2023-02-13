@@ -72,10 +72,9 @@ router.get("/addreview",(req,res)=>{
     if(!ensureLogin (req, res)) return;
     Category.findAll()
     .then(catData=>{
-        console.log(catData);
-        catData = catData.map(category=>{category.toJSON();});
+        catData = catData.map(category=>category.toJSON());
+        res.render("addreview",{catData});
     });
-    res.render("addreview",{catData});
 });
 
 router.get("/account",(req,res)=>{

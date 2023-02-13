@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const{ User, Category, Review} = require ('../models');
+const{ User, Category, Review, Product } = require ('../models');
 
 router.get('/', (req, res) =>{
     Review.findAll({
@@ -24,10 +24,45 @@ router.get('/:review', (req, res)=>{
     })
 });
 
-router.post('/',(req,res)=>{
+router.post('/',async (req,res)=>{
     if(req.session.userId) {
-        //let createData
-        //form it based on req.body AND session user
+        // const reviewObj = {
+        //     reviewText,
+        //     rating,
+        //     product,
+        //      category_id
+        // };
+        let userId = req.session.userId;
+        let createData = {
+            reviewText:req.body.reviewText,
+            rating:req.body.rating,
+            user_id:userId
+        };
+        await Product.findAll({
+            where:{
+                category_id:req.body.category_id
+            }
+        })
+        .then(async products => {
+            const jsonProducts = products.map(prod=>prod.toJSON());
+            let foundID = -1;
+            for(let i = 0; i < products.length; i++) {
+                if(jsonProducts[i].name.toLowerCase() === req.body.product.toLowerCase()) {
+                    foundID = jsonProducts[i].id;
+                    break;
+                }
+            }
+            if(foundID === -1) {
+                await Product.create({
+                    name:req.body.product,
+                    category_id:req.body.category_id
+                }).then(data=>{
+                    foundID = data.id;
+                });
+            }
+            createData.product_id = foundID;
+        });
+        
         Review.create(createData).then((data)=>{
             return res.status(201).json(data);
         }).catch(err=>{
