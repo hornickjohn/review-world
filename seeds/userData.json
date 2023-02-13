@@ -1,0 +1,39 @@
+[
+    {
+      "name": "Valeria",
+      "username": "val",
+      "email": "val@outlook.com",
+      "password": "pi314166"
+    },
+    {
+      "name": "Tobias",
+      "username": "my1tobi",
+      "email": "tobi@outlook.com",
+      "password": "fritolay"
+    },
+    {
+      "name": "Maximillian",
+      "username": "maximillian",
+      "email": "max@outlook.com",
+      "password": "iphone15"
+    },
+    {
+      "name": "Christian",
+      "username": "cristpilot",
+      "email": "crist@outlook.com",
+      "password": "23tacoma"
+    },
+    {
+      "name": "Cyntia",
+      "username": "cynrecio",
+      "email": "cyn@outlook.com",
+      "password": "supernova"
+    },
+    {
+        "name": "Alba",
+        "username": "Albaargn",
+        "email": "alba@outlook.com",
+        "password": "argentina2"
+      }
+  ]
+  
