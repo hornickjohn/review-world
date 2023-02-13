@@ -1,6 +1,10 @@
 <div id="feed">
     {{#each reviewData}}
-        <p>{{this.User.first_name}} {{this.User.last_name}} ({{this.rating}} stars)</p>
+        {{#if this.User.showname}}
+            <p>{{this.User.first_name}} {{this.User.last_name}} ({{this.rating}} stars)</p>
+        {{else}}
+            <p>{{this.User.username}} ({{this.rating}} stars)</p>
+        {{/if}}
         <p>{{this.body}}</p>
     {{/each}}
 </div>
