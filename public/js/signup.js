@@ -1,11 +1,17 @@
 document.querySelector("#signUpForm").addEventListener("submit",e=>{
     e.preventDefault();
     const signupObj = {
-        email:document.querySelector("#signUpEmail").value,
-        password:document.querySelector("#signUpPw").value,
-        username:document.querySelector("#signupUsername").value
+        first_name:document.querySelector("#firstName").value.trim(),
+        last_name:document.querySelector("#lastName").value.trim(),
+        email:document.querySelector("#signUpEmail").value.trim(),
+        password:document.querySelector("#signUpPw").value.trim(),
+        username:document.querySelector("#signupUsername").value.trim(),
+        showname:document.querySelector("#showName").checked
+    };
+    if(signupObj.first_name === "") {
+        signupObj.showname = false;
     }
-    console.log(signupObj)
+    console.log(signupObj);
     fetch("/api/users",{
         method:"POST",
         body:JSON.stringify(signupObj),

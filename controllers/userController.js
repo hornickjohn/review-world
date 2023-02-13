@@ -31,11 +31,8 @@ router.get("/:id",(req,res)=>{
 
 router.post("/",(req,res)=>{
     console.log(req.body);
-   User.create({
-    email:req.body.email,
-    password:req.body.password,
-    username:req.body.username
-   }).then(userData=>{
+   User.create(req.body)
+   .then(userData=>{
     req.session.userId = userData.id;
     req.session.userEmail = userData.email;
     req.session.loggedIn = true;
