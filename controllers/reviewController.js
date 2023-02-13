@@ -25,11 +25,17 @@ router.get('/:review', (req, res)=>{
 });
 
 router.post('/',(req,res)=>{
-    Review.create(req.body).then((data)=>{
-        return res.status(201).json(data);
-    }).catch(err=>{
-        console.log(err)
-    })
+    if(req.session.userId) {
+        //let createData
+        //form it based on req.body AND session user
+        Review.create(createData).then((data)=>{
+            return res.status(201).json(data);
+        }).catch(err=>{
+            console.log(err);
+        });
+    } else {
+        res.status(403).send("Not logged in.");
+    }
 });
 
 router.put('/:review',(req,res)=>{

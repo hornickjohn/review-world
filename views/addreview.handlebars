@@ -1,0 +1,17 @@
+<form id="addreviewform">
+    <label for="categories">Category:</label>
+    <select id="categories">
+        {{#each catData}}
+        <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <input id="star1" type="checkbox">
+    <input id="star2" type="checkbox">
+    <input id="star3" type="checkbox">
+    <input id="star4" type="checkbox">
+    <input id="star5" type="checkbox">
+    <textarea id="review" placeholder="Type your review here..."></textarea>
+    <input type="submit">
+</form>
+
+<script src="/js/addreview.js"></script>
