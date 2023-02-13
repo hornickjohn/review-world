@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Category, Product, } = require('../models');
+const { Category, Product, Review } = require('../models');
 
-// The `/api/categories` endpoint
+// The `/api/products` endpoint
 
 router.get('/', (req, res) => {
-  Category.findAll().then(data=> {
+  Product.findAll().then(data=> {
     res.json(data)
   }).catch(err=>{
     console.log(err)
@@ -13,22 +13,22 @@ router.get('/', (req, res) => {
       err:err
     })
   })
-  // find all categories
+  // find all products
   // be sure to include its associated Products
 }); 
 
 router.get('/:id', (req, res) => {
- Category.findByPk(req.params.id,{
-    include: [Product]
+ Product.findByPk(req.params.id,{
+    include: [Category,Review]
   }) .then((data) => {
     res.status(200).json(data);
   })
   .catch(err => handleError(res, err))
 });
 
-// create a new category
+// create a new product
 router.post('/', (req, res) => {
-  Category.create(req.body)
+  Product.create(req.body)
   .then((data) => {
     return res.status(200).json(data);
   })
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
   
 
 router.put('/:id', (req, res) => {
-  Category.update({
+  Product.update({
     name:req.body.name,
   },{
     where:{
@@ -54,11 +54,11 @@ router.put('/:id', (req, res) => {
 
 
 router.delete('/:id', (req, res) => {
-  Category.findByPk(req.params.id).then(foundCategory => {
-    if(!foundCategory){
-      res.status(400).json({msg: "no such Category"});
+  Product.findByPk(req.params.id).then(foundProduct => {
+    if(!foundProduct){
+      res.status(404).json({msg: "no such Product"});
     } else {
-      Category.destroy({
+      Product.destroy({
         where:{
             id:req.params.id
         }
