@@ -10,7 +10,16 @@ router.get("/", async(req,res)=>{
       const userData = user.get({ plain: true });
       userData.loggedIn = req.session.loggedIn;
 
-    res.render("home", userData);
+      const reviewData = await Review.findAll({
+        include:[User,Product],
+        order: [
+            ['createdAt', 'DESC']
+        ],
+        limit: 10
+      });
+      const hbsReviews = reviewData.map(review=>review.toJSON())
+
+    res.render("home", { userData, reviewData:hbsReviews });
 });
 router.get("/login",(req,res)=>{
     res.render("login");

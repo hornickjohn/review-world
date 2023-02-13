@@ -5,10 +5,13 @@ const userRoutes = require('./userController');
 router.use("/api/users",userRoutes);
 
 const categoryRoutes = require('./categoryController');
-router.use("/api/category",categoryRoutes);
+router.use("/api/categories",categoryRoutes);
 
 const reviewRoutes = require('./reviewController');
-router.use("/api/review",reviewRoutes);
+router.use("/api/reviews",reviewRoutes);
+
+const productRoutes = require('./productController');
+router.use("/api/products",productRoutes);
 
 const frontEndRoutes = require('./frontEndController');
 router.use("/",frontEndRoutes);
