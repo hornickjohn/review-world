@@ -51,7 +51,7 @@ router.get("/profile",(req,res)=>{
     if(!ensureLogin (req, res)) return;
     User.findOne({
         where:{
-            username: req.session.username
+            id: req.session.userId
         },  
         include:[Review]
     }).then(userData=>{
