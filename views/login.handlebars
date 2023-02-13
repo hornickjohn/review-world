@@ -2,7 +2,11 @@
 
 <form id="loginForm">
     <input type="text" id="loginEmail" placeholder="email">
+    {{#if userData.showname}}
+        {{userData.email}}
     <input type="password" id="loginPw">
+    {{userData.password}}
+    {{/if}}
     <button>Login</button>
 </form>
 
