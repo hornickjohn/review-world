@@ -10,7 +10,16 @@ router.get("/", async(req,res)=>{
       const userData = user.get({ plain: true });
       userData.loggedIn = req.session.loggedIn;
 
-    res.render("home", userData);
+      const reviewData = await Review.findAll({
+        include:[User,Product],
+        order: [
+            ['createdAt', 'DESC']
+        ],
+        limit: 10
+      });
+      const hbsReviews = reviewData.map(review=>review.toJSON())
+
+    res.render("home", { userData, reviewData:hbsReviews });
 });
 router.get("/login",(req,res)=>{
     res.render("login");
@@ -19,12 +28,11 @@ router.get("/signup",(req,res)=>{
     res.render("signup");
 });
 router.get("/profile/:username",(req,res)=>{
-    if(!ensureLogin (req, res)) return;
     User.findOne({
         where:{
             username: req.params.username
         },  
-        include:[Product]
+        include:[Review]
     }).then(userData=>{
         if(userData) {
             res.render("profile", {
@@ -36,6 +44,35 @@ router.get("/profile/:username",(req,res)=>{
     }).catch(err=>{
         res.status(500).json('Server error.');
     });
+});
+
+router.get("/profile",(req,res)=>{
+    if(!ensureLogin (req, res)) return;
+    User.findOne({
+        where:{
+            username: req.session.username
+        },  
+        include:[Review]
+    }).then(userData=>{
+        if(userData) {
+            res.render("profile", {
+                userData: userData.toJSON()
+            });
+        } else {
+            res.status(404).json('User not found.');
+        }
+    }).catch(err=>{
+        res.status(500).json('Server error.');
+    });
+});
+
+router.get("/addreview",(req,res)=>{
+    if(!ensureLogin (req, res)) return;
+    Category.findAll()
+    .then(catData=>{
+        catData = catData.map(category=>{category.toJSON();});
+    });
+    res.render("addreview",{catData});
 });
 
 router.get("/account",(req,res)=>{

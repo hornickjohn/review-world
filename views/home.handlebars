@@ -1,1 +1,13 @@
-<h1>hello world</h1>
+<div id="feed">
+    {{#each reviewData}}
+        {{#if this.User.showname}}
+            <p>{{this.User.first_name}} {{this.User.last_name}} ({{this.rating}} stars)</p>
+        {{else}}
+            <p>{{this.User.username}} ({{this.rating}} stars)</p>
+        {{/if}}
+        <p>{{this.body}}</p>
+    {{/each}}
+</div>
+<div id="search">
+
+</div>
