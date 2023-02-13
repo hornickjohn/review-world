@@ -35,8 +35,9 @@ router.get("/profile/:username",(req,res)=>{
         include:[Review]
     }).then(userData=>{
         if(userData) {
+            let hbsUserData = userData.toJSON();
             res.render("profile", {
-                userData: userData.toJSON()
+                userData:hbsUserData
             });
         } else {
             res.status(404).json('User not found.');
@@ -50,13 +51,14 @@ router.get("/profile",(req,res)=>{
     if(!ensureLogin (req, res)) return;
     User.findOne({
         where:{
-            username: req.session.username
+            id: req.session.userId
         },  
         include:[Review]
     }).then(userData=>{
         if(userData) {
+            let hbsUserData = userData.toJSON();
             res.render("profile", {
-                userData: userData.toJSON()
+                userData:hbsUserData
             });
         } else {
             res.status(404).json('User not found.');
@@ -70,9 +72,9 @@ router.get("/addreview",(req,res)=>{
     if(!ensureLogin (req, res)) return;
     Category.findAll()
     .then(catData=>{
-        catData = catData.map(category=>{category.toJSON();});
+        catData = catData.map(category=>category.toJSON());
+        res.render("addreview",{catData});
     });
-    res.render("addreview",{catData});
 });
 
 router.get("/account",(req,res)=>{
