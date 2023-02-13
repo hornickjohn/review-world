@@ -2,8 +2,13 @@
 
 <form id="signUpForm">
     <input type="text" id="signUpEmail" placeholder="email">
+    {{#if userData.email}}
     <input type="text" id="signupUsername" placeholder="Username">
+    {{userData.showname}}
+        {{userData.Username}}
     <input type="password" id="signUpPw" placeholder="password">
+    {{userData.password}}
+    {{/if}}
     <button>Sign Up</button>
 </form>
 

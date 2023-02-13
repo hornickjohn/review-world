@@ -1,0 +1,10 @@
+<form>
+    <input type="text" id="search" placeholder="search">
+    {{#if categoryData.name}}
+    {{else}}
+        {{productData.name}}
+    {{else}}
+        {{userData.name}}
+    {{/if}}
+    <button>Search</button>
+</form>
