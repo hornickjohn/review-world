@@ -66,11 +66,24 @@ router.get("/product", async (req, res) => {
 
 router.get("/review", async (req, res) => {
   if (!ensureLogin(req, res)) return;
-  const products = await Product.findAll();
-  const productData = products.map((product) => {
-    return product.get({ plain: true });
+  const selectedProduct = req.query.product_id || 0
+  console.log(selectedProduct)
+  const products = await Product.findAll({
+    include: [Category]
   });
+  const productData = products.map((product) => {
+    const p = product.get({ plain: true });
+    if (p.id == selectedProduct)
+    {
+      p.selectedProduct = true
+    }
+    return p;
+  });
+
   const reviews = await Review.findAll({
+    where: {
+      product_id: selectedProduct,
+    },
     include: [
       {
         model: Product,
@@ -82,12 +95,13 @@ router.get("/review", async (req, res) => {
   const reviewData = reviews.map((review) => {
     return review.get({ plain: true });
   });
-  console.log(productData);
-  console.log(reviewData);
+  //console.log(productData);
+  //console.log(reviewData);
   res.render("review", {
     productData: productData,
     reviewData: reviewData,
     loggedIn: true,
+    selectedProduct: selectedProduct,
   });
 });
 

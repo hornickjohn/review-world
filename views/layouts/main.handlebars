@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review World</title>
     <script src="https://cdn.rawgit.com/BioPhoton/angular1-star-rating/v1.2.4/dist/index.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/37ee78d39c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -13,15 +15,16 @@
         
         {{#if loggedIn}}
         <a href="/">Home</a>
+        <a href="/category">Categories</a>
+        <a href="/product">Product</a>
+        <a href="/review">Review</a>
         <a href="/logout">Log out</a>
         {{else}}
         <a href="/login">Log in</a>
         <a href="/signup">Sign up</a>
         {{/if}}
 
-        <a href="/category">Categories</a>
-        <a href="/product">Product</a>
-        <a href="/review">Review</a>
+ 
     </header>
 
     <h1>Review World</h1>

@@ -1,9 +1,50 @@
 [
   {
-    "id": 1,
     "product_id": 1,
     "user_id": 1,
     "rating": 1,
-    "reviewText": 1
+    "reviewText": "too much sugar"
+  },
+  {
+    "product_id": 1,
+    "user_id": 2,
+    "rating": 5,
+    "reviewText": "best coke ever!!!"
+  },
+  {
+    "product_id": 2,
+    "user_id": 3,
+    "rating": 3,
+    "reviewText": "I'm not happy about it"
+  },
+  {
+    "product_id": 3,
+    "user_id": 3,
+    "rating": 5,
+    "reviewText": "awesome!"
+  },
+  {
+    "product_id": 3,
+    "user_id": 3,
+    "rating": 4,
+    "reviewText": "I did not like it this time"
+  },
+  {
+    "product_id": 4,
+    "user_id": 4,
+    "rating": 4,
+    "reviewText": "mmm..."
+  },
+  {
+    "product_id": 4,
+    "user_id": 5,
+    "rating": 2,
+    "reviewText": "duh this is bad"
+  },
+  {
+    "product_id": 5,
+    "user_id": 5,
+    "rating": 5,
+    "reviewText": "loved it"
   }
 ]

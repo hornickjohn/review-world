@@ -1,0 +1,31 @@
+/*
+font-family Roboto added from https://codepen.io/jexordexan/pen/yyYEJa
+*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400);
+*{
+    font-family: roboto;
+    box-sizing: border-box;
+    margin:10;
+    padding:10;
+    /*font-family: sans-serif;*/
+}
+
+header,footer {
+    height:15vh;
+    background:salmon;
+    display: flex;
+    justify-content: space-around;
+}
+
+header >a {
+    font-size:2em;
+}
+
+main {
+    min-height: 70vh;
+    background:cornflowerblue
+}
+
+.mainContent {
+    margin: 10px;
+}
