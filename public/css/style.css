@@ -1,0 +1,22 @@
+.reviewcard {
+    border:5px solid black;
+    margin:5px;
+}
+.reviewcard header {
+    height:60px;
+    background-color:black;
+    color:white;
+}
+.reviewcard header h2 {
+    margin:12px;
+    float:left;
+}
+.reviewcard header p {
+    float:right;
+}
+.reviewcard>p {
+    margin:10px;
+}
+.reviewcard>p:nth-of-type(2) {
+    font-style:italic;
+}
