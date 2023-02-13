@@ -1,4 +1,5 @@
 const form = document.querySelector("#addreviewform");
+const categoryInput = document.querySelector("#categories")
 const reviewInput = document.querySelector("#review");
 const ratingBoxes = [];
 
@@ -16,8 +17,7 @@ for(let i = 0; i < ratingBoxes.length; i++) {
 form.addEventListener('submit',event=>{
     event.preventDefault();
 
-    let category = "";
-    
+    let category = categoryInput.value;
 
     let rating = 0;
     for(let i = ratingBoxes.length - 1; i >= 0; i--) {
