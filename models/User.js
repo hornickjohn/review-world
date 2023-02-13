@@ -40,7 +40,7 @@ User.init({
        type:DataTypes.STRING,
        allowNull:false,
        validate:{
-           len:[8,256]
+           len:[1,256] //changed temp for testing
        }
     },
     showname: {

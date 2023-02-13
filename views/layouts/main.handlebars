@@ -7,9 +7,28 @@
     <title>Review World</title>
 </head>
 <body>
+
+     <header>
+        
+        {{#if loggedIn}}
+        <a href="/">Home</a>
+        <a href="/logout">Log out</a>
+        {{else}}
+        <a href="/login">Log in</a>
+        <a href="/signup">Sign up</a>
+        {{/if}}
+    </header>
+
     <h1>Review World</h1>
     <main>
+<<<<<<< HEAD
         {{body}}
     </main>
+=======
+         {{{body}}}
+         
+    </main>
+   
+>>>>>>> dev
 </body>
 </html>
