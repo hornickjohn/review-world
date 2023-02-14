@@ -7,11 +7,7 @@ const recaptcha = new Recaptcha(process.env.RECAPTCHA_SITE,process.env.RECAPTCHA
 
 router.get("/", async(req,res)=>{
     if(!ensureLogin (req, res)) return;
-    const user = await User.findOne({
-        where: { id: req.session.userId }
-      });
-      const userData = user.get({ plain: true });
-      userData.loggedIn = req.session.loggedIn;
+    const currentUserData = await getUserData(req);
 
       const reviewData = await Review.findAll({
         include:[User,Product],
@@ -22,15 +18,18 @@ router.get("/", async(req,res)=>{
       });
       const hbsReviews = reviewData.map(review=>review.toJSON())
 
-    res.render("home", { userData, reviewData:hbsReviews });
+    res.render("home", { currentUserData, reviewData:hbsReviews });
 });
-router.get("/login",(req,res)=>{
-    res.render("login");
+router.get("/login",async (req,res)=>{
+    const currentUserData = await getUserData(req);
+    res.render("login", { currentUserData });
 });
-router.get("/signup",(req,res)=>{
-    res.render("signup", { captcha: recaptcha.render() });
+router.get("/signup",async (req,res)=>{
+    const currentUserData = await getUserData(req);
+    res.render("signup", { currentUserData, captcha: recaptcha.render() });
 });
-router.get("/profile/:username",(req,res)=>{
+router.get("/profile/:username",async (req,res)=>{
+    const currentUserData = await getUserData(req);
     User.findOne({
         where:{
             username: req.params.username
@@ -40,6 +39,7 @@ router.get("/profile/:username",(req,res)=>{
         if(userData) {
             let hbsUserData = userData.toJSON();
             res.render("profile", {
+                currentUserData,
                 userData:hbsUserData
             });
         } else {
@@ -50,8 +50,9 @@ router.get("/profile/:username",(req,res)=>{
     });
 });
 
-router.get("/profile",(req,res)=>{
+router.get("/profile",async (req,res)=>{
     if(!ensureLogin (req, res)) return;
+    const currentUserData = await getUserData(req);
     User.findOne({
         where:{
             id: req.session.userId
@@ -61,6 +62,7 @@ router.get("/profile",(req,res)=>{
         if(userData) {
             let hbsUserData = userData.toJSON();
             res.render("profile", {
+                currentUserData,
                 userData:hbsUserData
             });
         } else {
@@ -71,23 +73,26 @@ router.get("/profile",(req,res)=>{
     });
 });
 
-router.get("/addreview",(req,res)=>{
+router.get("/addreview",async (req,res)=>{
     if(!ensureLogin (req, res)) return;
+    const currentUserData = await getUserData(req);
     Category.findAll()
     .then(catData=>{
         catData = catData.map(category=>category.toJSON());
-        res.render("addreview",{catData});
+        res.render("addreview",{currentUserData,catData});
     });
 });
 
-router.get("/account",(req,res)=>{
+router.get("/account",async (req,res)=>{
     if(!ensureLogin (req, res)) return;
-    res.render("updateuser");
+    const currentUserData = await getUserData(req);
+    res.render("updateuser", { currentUserData });
 });
 
-router.get("/search",(req,res)=>{
+router.get("/search",async (req,res)=>{
     if(!ensureLogin (req, res)) return;
-    res.render("search");
+    const currentUserData = await getUserData(req);
+    res.render("search", { currentUserData });
 });
 
 router.get("/logout", (req, res) => {
@@ -99,6 +104,19 @@ router.get("/logout", (req, res) => {
         res.redirect("/login");
     }
   });
+
+async function getUserData(req) {
+    if(req.session.loggedIn)
+    {
+    const user = await User.findOne({
+        where: { id: req.session.userId }
+      });
+      const userData = user.get({ plain: true });
+      userData.loggedIn = req.session.loggedIn;
+      return userData;
+    }
+    return {};
+}
 
 
 function ensureLogin(req, res){

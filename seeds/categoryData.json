@@ -1,8 +1,38 @@
 [
   {
-    "name": "Beverages"
+      "name":"Miscellaneous"
   },
   {
-    "name": "Meals"
+      "name":"Movies"
+  },
+  {
+      "name":"TV Shows"
+  },
+  {
+      "name":"Restaurants"
+  },
+  {
+      "name":"Grocery"
+  },
+  {
+      "name":"Board Games"
+  },
+  {
+      "name":"Video Games"
+  },
+  {
+      "name":"Hotels/Resorts"
+  },
+  {
+      "name":"Airlines"
+  },
+  {
+      "name":"Cruise Lines"
+  },
+  {
+      "name":"Theme Parks"
+  },
+  {
+      "name": "Coffee Shops"
   }
 ]
