@@ -1,51 +1,38 @@
 [
   {
-    "id": "1",
-    "name": "Beverages"
+      "name":"Miscellaneous"
   },
   {
-    "id": "2",
-    "name": "Meals"
+      "name":"Movies"
   },
   {
-    "id": "3",
-    "name": "Toys"
+      "name":"TV Shows"
   },
   {
-    "id": "4",
-    "name": "Electronics"
+      "name":"Restaurants"
   },
   {
-    "id": "5",
-    "name": "Movies"
+      "name":"Grocery"
   },
   {
-    "id": "6",
-    "name": "Tv shows"
+      "name":"Board Games"
   },
   {
-    "id": "7",
-    "name": "Restaurants"
+      "name":"Video Games"
   },
   {
-    "id": "8",
-    "name": "Movie theaters"
+      "name":"Hotels/Resorts"
   },
   {
-    "id": "9",
-    "name": "Parks"
+      "name":"Airlines"
   },
   {
-    "id": "10",
-    "name": "Bars"
+      "name":"Cruise Lines"
   },
   {
-    "id": "11",
-    "name": "Books"
+      "name":"Theme Parks"
   },
   {
-    "id": "12",
-    "name": "Coffee Shops"
+      "name": "Coffee Shops"
   }
-  
 ]
