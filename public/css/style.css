@@ -73,6 +73,29 @@ input{
     font-style:italic;
 }
 
-#signUpForm {
+#loginEmail {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+}
+#loginPw {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+}
+#loginBtn {
+    border-radius: 10px;
+    padding: 5px 15px 5px 15px;
+    margin: 10px;
+}
+
+.signUpForm {
+    border-radius: 10px;
+    padding: 5px 15px 5px 15px;
+    margin: 10px;
+}
+#signUpBtn{
+    border-radius: 10px;
+    padding: 5px 15px 5px 15px;
     margin: 10px;
 }
