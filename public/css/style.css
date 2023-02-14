@@ -72,3 +72,7 @@ input{
 .reviewcard>p:nth-of-type(2) {
     font-style:italic;
 }
+
+#signUpForm {
+    margin: 10px;
+}

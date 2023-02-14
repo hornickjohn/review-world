@@ -3,22 +3,18 @@
 <form class="card position-absolute top-50 start-50 translate-middle center p-5 m-3 w-50 "id="loginForm">
   <div class="mb-3">
     <label class="form-label">Email address</label>
-    <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp">
+    <input type="email" class="form-control" id="loginEmail">
   </div>
   <div class="mb-3">
     <label class="form-label">Password</label>
     <input type="password" class="form-control" id="loginPw">
   </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label">Check me out</label>
-  </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-{{!-- <form id="loginForm">
+<form id="loginForm">
     <input type="text" id="loginEmail" placeholder="email">
-    <input type="password" id="loginPw">
+    <input type="password" id="loginPw" placeholder="password">
     <button>Login</button>
-</form> --}}
+</form>
 <script src="/js/login.js"></script>

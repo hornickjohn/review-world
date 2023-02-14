@@ -11,7 +11,7 @@
 <body>
     <header>
         <h1>Review World</h1>
-        <nav class="navbar bg-body-tertiary">
+        {{!-- <nav class="navbar bg-body-tertiary">
             {{#if LoggedIn}}
             <div class="container-fluid">
             <a class="navbar-brand" href="/">Home</a>
@@ -21,18 +21,17 @@
             <a class="navbar-brand" href="/signup">Sign up</a>
             </div>
             {{/if}}
-        </nav>
-        {{!-- {{#if loggedIn}}
+        </nav> --}}
+        {{#if loggedIn}}
         <a href="/">Home</a>
         <a href="/logout">Log out</a>
         {{else}}
         <a href="/login">Log in</a>
         <a href="/signup">Sign up</a>
-        {{/if}} --}}
+        {{/if}}
     </header>
     <main>
             {{{body}}}
     </main>
-    <footer>This is the footer</footer>
 </body>
 </html>
