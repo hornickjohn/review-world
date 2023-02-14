@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/hornickjohn/review-world#readme",
   "dependencies": {
-    "angular1-star-rating": "^1.2.11",
     "bcrypt": "^5.1.0",
     "connect-session-sequelize": "^7.1.5",
     "dotenv": "^16.0.3",
@@ -29,6 +28,7 @@
     "express-recaptcha": "^5.1.0",
     "express-session": "^1.17.3",
     "mysql2": "^3.1.2",
+    "request": "^2.88.2",
     "sequelize": "^6.28.0"
   }
 }
