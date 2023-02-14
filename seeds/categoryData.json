@@ -1,8 +1,51 @@
 [
   {
+    "id": "1",
     "name": "Beverages"
   },
   {
+    "id": "2",
     "name": "Meals"
+  },
+  {
+    "id": "3",
+    "name": "Toys"
+  },
+  {
+    "id": "4",
+    "name": "Electronics"
+  },
+  {
+    "id": "5",
+    "name": "Movies"
+  },
+  {
+    "id": "6",
+    "name": "Tv shows"
+  },
+  {
+    "id": "7",
+    "name": "Restaurants"
+  },
+  {
+    "id": "8",
+    "name": "Movie theaters"
+  },
+  {
+    "id": "9",
+    "name": "Parks"
+  },
+  {
+    "id": "10",
+    "name": "Bars"
+  },
+  {
+    "id": "11",
+    "name": "Books"
+  },
+  {
+    "id": "12",
+    "name": "Coffe Shops"
   }
+  
 ]
