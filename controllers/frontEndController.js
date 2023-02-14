@@ -106,12 +106,16 @@ router.get("/logout", (req, res) => {
   });
 
 async function getUserData(req) {
+    if(req.session.loggedIn)
+    {
     const user = await User.findOne({
         where: { id: req.session.userId }
       });
       const userData = user.get({ plain: true });
       userData.loggedIn = req.session.loggedIn;
       return userData;
+    }
+    return {};
 }
 
 
