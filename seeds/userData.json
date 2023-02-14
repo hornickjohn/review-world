@@ -1,0 +1,45 @@
+[
+    {
+      "first_name": "Valeria",
+      "username": "val",
+      "email": "val@outlook.com",
+      "password": "pi314166",
+      "showname": true
+    },
+    {
+      "first_name": "Tobias",
+      "username": "my1tobi",
+      "email": "tobi@outlook.com",
+      "password": "fritolay",
+      "showname": false
+    },
+    {
+      "first_name": "Maximillian",
+      "last_name": "the Third",
+      "username": "maximillian",
+      "email": "max@outlook.com",
+      "password": "iphone15",
+      "showname": true
+    },
+    {
+      "first_name": "Christian",
+      "username": "cristpilot",
+      "email": "crist@outlook.com",
+      "password": "23tacoma"
+    },
+    {
+      "first_name": "Cyntia",
+      "last_name": "Surname",
+      "username": "cynrecio",
+      "email": "cyn@outlook.com",
+      "password": "supernova",
+      "showname": true
+    },
+    {
+        "first_name": "Alba",
+        "username": "Albaargn",
+        "email": "alba@outlook.com",
+        "password": "argentina2"
+      }
+  ]
+  

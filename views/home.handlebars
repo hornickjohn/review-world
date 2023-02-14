@@ -1,0 +1,19 @@
+<div id="feed">
+    {{#each reviewData}}
+        <div class="reviewcard">
+            <header>
+                <h2>{{this.product.name}}</h2>
+                <p>{{this.rating}} stars</p>
+            </header>
+            {{#if this.User.showname}}
+                <p>Posted by <a href="/profile/{{this.user.username}}">{{this.user.first_name}} {{this.user.last_name}}</a></p>
+            {{else}}
+                <p>Posted by <a href="/profile/{{this.user.username}}">{{this.user.username}}</a></p>
+            {{/if}}
+            <p>{{this.reviewText}}</p>
+        </div>
+    {{/each}}
+</div>
+<div id="search">
+
+</div>
