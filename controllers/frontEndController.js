@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const {Category,User,Review,Product} = require('../models');
+require('dotenv').config();
+const Recaptcha = require('express-recaptcha').RecaptchaV2;
+const recaptcha = new Recaptcha(process.env.RECAPTCHA_SITE,process.env.RECAPTCHA_SECRET, {callback:'captchaCallback'});
 
 router.get("/", async(req,res)=>{
     if(!ensureLogin (req, res)) return;
@@ -25,7 +28,7 @@ router.get("/login",(req,res)=>{
     res.render("login");
 });
 router.get("/signup",(req,res)=>{
-    res.render("signup");
+    res.render("signup", { captcha: recaptcha.render() });
 });
 router.get("/profile/:username",(req,res)=>{
     User.findOne({

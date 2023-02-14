@@ -1,3 +1,4 @@
+let tkn = '';
 document.querySelector("#signUpForm").addEventListener("submit",e=>{
     e.preventDefault();
     const signupObj = {
@@ -12,6 +13,9 @@ document.querySelector("#signUpForm").addEventListener("submit",e=>{
         signupObj.showname = false;
     }
     console.log(signupObj);
+
+    signupObj.token = tkn;
+
     fetch("/api/users",{
         method:"POST",
         body:JSON.stringify(signupObj),
@@ -20,9 +24,13 @@ document.querySelector("#signUpForm").addEventListener("submit",e=>{
         }
     }).then(res=>{
         if(res.ok){
-           location.href="/profile"
+           location.href="/profile";
         } else {
-            alert("signup failed")
+            alert("signup failed");
         }
-    })
-})
+    });
+});
+
+function captchaCallback(token) {
+    tkn = token;
+}
