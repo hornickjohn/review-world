@@ -16,22 +16,24 @@
             <div class="container-fluid">
             <a class="navbar-brand" href="/">Home</a>
             <a class="navbar-brand" href="/logout">Log out</a>
+            <a class="navbar-brand" href="/profile">Profile</a>
+            <a class="navbar-brand" href="/addreview">New review</a>
+            <a class="navbar-brand" href="/account">Update account</a>
             {{else}}
             <a class="navbar-brand" href="/login">Log in</a>
             <a class="navbar-brand" href="/signup">Sign up</a>
+            </div>
+            {{/if}}
             <form class="navbar-brand" href="/search">
                 <input type="text" placeholder="search here">
                 <button>Search</button>
             </form>
-            <a class="navbar-brand" href="/profile">Profile</a>
-            <a class="navbar-brand" href="/addreview">New review</a>
-            <a class="navbar-brand" href="/account">Update account</a>
-            </div>
-            {{/if}}
         </nav> 
         {{#if currentUserData.loggedIn}}
+        {{!--
         <a href="/">Home</a>
         <a href="/logout">Log out</a>
+        --}}
         {{else}}
         {{!--
         <a href="/login">Log in</a>
