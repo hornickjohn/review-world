@@ -25,21 +25,11 @@
             </div>
             {{/if}}
             <form class="navbar-brand" href="/search">
-                <input type="text" placeholder="search here">
+                <select name="category"></select>
+                <input name="term" type="text" placeholder="search products">
                 <button>Search</button>
             </form>
-        </nav> 
-        {{#if currentUserData.loggedIn}}
-        {{!--
-        <a href="/">Home</a>
-        <a href="/logout">Log out</a>
-        --}}
-        {{else}}
-        {{!--
-        <a href="/login">Log in</a>
-        <a href="/signup">Sign up</a>
-        --}}
-        {{/if}}
+        </nav>
     </header>
     <main>
             {{{body}}}
