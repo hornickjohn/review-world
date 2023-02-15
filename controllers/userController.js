@@ -32,7 +32,6 @@ router.get("/:id",(req,res)=>{
 })
 
 router.post("/",async (req,res)=>{
-    console.log(req.body.token);
     request.post({
         url:`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET}&response=${req.body.token}`,    
         headers: {
@@ -51,11 +50,59 @@ router.post("/",async (req,res)=>{
                 res.json(userData);
             }).catch(err=>{
                 console.log(err);
-                res.status(500).json({msg:"Server error attempting to create account.",err});
+                res.status(500).json({msg:"Error attempting to create account.",err});
             });
         }
     });
-})
+});
+router.put("/",async (req,res)=>{
+    if(req.session.loggedIn) {
+        let passmatch = false;
+        await User.findOne({
+            where:{
+                id:req.session.userId
+            }
+            }).then(loggedUserData=>{
+             if(!loggedUserData){
+                console.log(err);
+                 return res.status(500).json({msg:"session desync with server"})
+             } else {
+                 if(bcrypt.compareSync(req.body.currentpass,loggedUserData.password)){
+                     passmatch = true;
+                 } else {
+                     return res.status(403).json({msg:"incorrect current password"});
+                 }
+             }
+            }).catch(err=>{
+             console.log(err);
+             res.status(500).json({msg:"server error",err})
+            });
+        if(passmatch) {
+            let updateObj = {
+                username:req.body.username,
+                email:req.body.email,
+                showname:req.body.showname
+            };
+            if(req.body.first_name) { updateObj.first_name = req.body.first_name; }
+            if(req.body.last_name) { updateObj.last_name = req.body.last_name; }
+            if(req.body.newpass) { updateObj.password = req.body.newpass; }
+
+            User.update(updateObj,{
+                where:{
+                    id:req.session.userId
+                },
+                individualHooks: true
+            }).then(data=>{
+                res.status(204).send();
+            }).catch(err=>{
+                console.log(err);
+                res.status(500).json({msg:"server error",err});
+            });
+        }
+    } else {
+        res.status(403).send('must be logged in');
+    }
+});
 router.post("/login",(req,res)=>{
    User.findOne({
    where:{
@@ -77,7 +124,7 @@ router.post("/login",(req,res)=>{
    }).catch(err=>{
     console.log(err);
     res.status(500).json({msg:"oh noes!",err})
-   })
+   });
 })
 
 

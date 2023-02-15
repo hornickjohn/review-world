@@ -14,30 +14,29 @@
          <nav class="navbar bg-body-tertiary">
             {{#if currentUserData.loggedIn}}
             <div class="container-fluid">
-            <a class="navbar-brand" href="/">Home</a>
             <a class="navbar-brand" href="/logout">Log out</a>
-            {{else}}
-            <a class="navbar-brand" href="/login">Log in</a>
-            <a class="navbar-brand" href="/signup">Sign up</a>
-            <form class="navbar-brand" href="/search">
-                <input type="text" placeholder="search here">
-                <button>Search</button>
-            </form>
             <a class="navbar-brand" href="/profile">Profile</a>
             <a class="navbar-brand" href="/addreview">New review</a>
             <a class="navbar-brand" href="/account">Update account</a>
+            {{else}}
+            <a class="navbar-brand" href="/login">Log in</a>
+            <a class="navbar-brand" href="/signup">Sign up</a>
             </div>
             {{/if}}
-        </nav> 
-        {{#if currentUserData.loggedIn}}
-        <a href="/">Home</a>
-        <a href="/logout">Log out</a>
-        {{else}}
-        {{!--
-        <a href="/login">Log in</a>
-        <a href="/signup">Sign up</a>
-        --}}
-        {{/if}}
+            <a class="navbar-brand" href="/">Home</a>
+            <form class="navbar-brand" action="/search">
+                <select name="category" id="cars">
+                    <option value="any">--Any--</option>
+                    {{#each categoryData}}
+                    <option value="{{this.name}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+                <input name="term" type="text" placeholder="search products">
+                <label for="minstars">Min Star Rating</label><input id="minstars" name="min" type="number" max="5" min="1" placeholder="1-5">
+                <label for="maxstars">Max Star Rating</label><input id="maxstars" name="max" type="number" max="5" min="1" placeholder="1-5">
+                <button>Search</button>
+            </form>
+        </nav>
     </header>
     <main>
             {{{body}}}
