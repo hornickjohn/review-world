@@ -6,7 +6,6 @@ const Recaptcha = require('express-recaptcha').RecaptchaV2;
 const recaptcha = new Recaptcha(process.env.RECAPTCHA_SITE,process.env.RECAPTCHA_SECRET, {callback:'captchaCallback'});
 
 router.get("/", async(req,res)=>{
-    if(!ensureLogin (req, res)) return;
     const currentUserData = await getUserData(req);
 
       const reviewData = await Review.findAll({
@@ -90,7 +89,7 @@ router.get("/account",async (req,res)=>{
 });
 
 router.get("/search",async (req,res)=>{
-    if(!ensureLogin (req, res)) return;
+    //if(!ensureLogin (req, res)) return;
     const currentUserData = await getUserData(req);
     res.render("search", { currentUserData });
 });
