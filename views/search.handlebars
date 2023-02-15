@@ -8,7 +8,7 @@
     {{#each reviewData}}
         <div class="reviewcard">
             <header>
-                <h2>{{this.product.name}}</h2>
+                <h2>{{this.product.name}} ({{this.product.category.name}})</h2>
                 <p>{{this.rating}} stars</p>
             </header>
             {{#if this.User.showname}}
