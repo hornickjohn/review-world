@@ -11,7 +11,16 @@ router.get("/", async(req,res)=>{
     const categoryData = categoryDataRaw.map(category => category.toJSON());
 
       const reviewData = await Review.findAll({
-        include:[User,Product],
+        include: [ User,
+            {
+                model:Product,
+                include: [ 
+                    {
+                        model:Category
+                    }
+                ]
+            }
+        ],
         order: [
             ['createdAt', 'DESC']
         ],
@@ -160,7 +169,7 @@ router.get("/search",async (req,res)=>{
             where: {
                 rating
             },
-            include: [
+            include: [ User,
                 {
                     model:Product,
                     where: {
@@ -183,7 +192,7 @@ router.get("/search",async (req,res)=>{
         };
     } else if(productName && categoryName) {
         P = {
-            include: [
+            include: [ User,
                 {
                     model:Product,
                     where: {
@@ -209,7 +218,7 @@ router.get("/search",async (req,res)=>{
             where: {
                 rating
             },
-            include: [
+            include: [ User,
                 {
                     model:Product,
                     include: [ 
@@ -232,7 +241,7 @@ router.get("/search",async (req,res)=>{
             where: {
                 rating
             },
-            include: [
+            include: [ User,
                 {
                     model:Product,
                     where: {
@@ -255,7 +264,7 @@ router.get("/search",async (req,res)=>{
             where: {
                 rating
             },
-            include: [
+            include: [ User,
                 {
                     model:Product,
                     include: [ 
@@ -272,7 +281,7 @@ router.get("/search",async (req,res)=>{
         };
     } else if(productName) {
         P = {
-            include: [
+            include: [ User,
                 {
                     model:Product,
                     where: {
@@ -292,7 +301,7 @@ router.get("/search",async (req,res)=>{
         };
     } else if(categoryName) {
         P = {
-            include: [
+            include: [ User,
                 {
                     model:Product,
                     include: [ 
@@ -312,7 +321,7 @@ router.get("/search",async (req,res)=>{
         };
     } else {
         P = {
-            include: [
+            include: [ User,
                 {
                     model:Product,
                     include: [ 
