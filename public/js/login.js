@@ -15,7 +15,7 @@ document.querySelector("#loginForm").addEventListener("submit",e=>{
         if(res.ok){
            location.href="/profile"
         } else {
-            alert("signup failed")
+            alert("Login Failed")
         }
     })
 })

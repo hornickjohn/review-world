@@ -1,20 +1,26 @@
-<h2>Update your profile</h2>
-<form id="update-profile">
-    <h3>Change username</h3>
-        <label for="username">Username: </label><input id="username" type="text" value="{{currentUserData.username}}" required>
-    <h3>Change email</h3>
-        <label for="email">Email: </label><input id="email" type="text" value="{{currentUserData.email}}" required>
-    <h3>Change name</h3>
-        <label for="first_name">First name: </label><input id="first_name" type="text" value="{{currentUserData.first_name}}">
-        <label for="last_name">Last name: </label><input id="last_name" type="text" value="{{currentUserData.last_name}}">
-    <h3>Change password</h3>
-        <label for="newpass">Enter new password: </label><input id="newpass" type="password">
-        <label for="confirmpass">Confirm new password: </label><input id="confirmpass" type="password">
-    <h3>Share Real Name</h3>
-        <input id="showname" type="checkbox" {{#if currentUserData.showname}}checked{{/if}}>
-    <h3>Current Password</h3>
-        <input id="currentpass" type="password" required>
-    <button>Save Changes</button>
-</form>
-
+<div class="center-inside">
+    <form id="update-profile" class="mycontentarea">
+        <h3>Change username</h3>
+            <label for="username">Username: </label><input id="username" type="text" value="{{currentUserData.username}}" required>
+            <hr>
+        <h3>Change email</h3>
+            <label for="email">Email: </label><input id="email" type="text" value="{{currentUserData.email}}" required>
+            <hr>
+        <h3>Change name</h3>
+            <label for="first_name">First name: </label><input id="first_name" type="text" value="{{currentUserData.first_name}}">
+            <label for="last_name">Last name: </label><input id="last_name" type="text" value="{{currentUserData.last_name}}">
+            <hr>
+        <h3>Change password</h3>
+            <label for="newpass">Enter new password: </label><input id="newpass" type="password">
+            <label for="confirmpass">Confirm new password: </label><input id="confirmpass" type="password">
+            <hr>
+        <h3>Share Real Name</h3>
+            <input id="showname" type="checkbox" {{#if currentUserData.showname}}checked{{/if}}>
+            <hr>
+        <h3>Current Password</h3>
+            <input id="currentpass" type="password" required>
+            <hr>
+        <button>Save Changes</button>
+    </form>
+</div>
 <script src="/js/updateuser.js"></script>

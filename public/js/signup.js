@@ -26,7 +26,7 @@ document.querySelector("#signUpForm").addEventListener("submit",e=>{
         if(res.ok){
            location.href="/profile";
         } else {
-            alert("signup failed");
+            alert("Signup Failed");
         }
     });
 });

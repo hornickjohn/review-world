@@ -1,3 +1,9 @@
+:root {
+    --maincolor:black;
+    --backingcolor:purple;
+    --forecolor:gold;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -5,38 +11,54 @@
     font-family: sans-serif;
 }
 
+body {
+    background-color:var(--backingcolor);
+}
+
 h1{
     text-align: center;
-    color: #c9edd8;
-    background-color: #3db88b;
+    color: var(--forecolor);
+    background-color: var(--maincolor);
     font-size: 60px;
-} 
+}
+h1 a{
+    text-decoration:none;
+    color:var(--forecolor)
+}
 
 header{
-    background-color: #3db88b;
+    background-color: var(--maincolor);
+    padding:10px;
 }
 nav a {
-color:#3db88b;
-background-color: #eff0ae;
+text-decoration-color:var(--forecolor);
+background-color: var(--backingcolor);
 font-size: 20px;
 padding: 15px;
 border-radius: 10px;
 margin-right: 10px;
 }
 
-#login{
-    font-size: 25px;
-    text-align: center;
-    color: #eff0ae;
-    background-color: #62cb9f;
-    padding:15px;
+body>header>nav {
+    display:flex;
+    background-color:blue;
 }
 
-#sign-up{
+#navbuttons {
+    width:48%;
+    justify-content: left;
+}
+#navsearch {
+    width:48%;
+    display:flex;
+    flex-wrap:wrap;
+}
+
+#pagehead{
     font-size: 25px;
     text-align: center;
-    color: #eff0ae;
-    background-color: #62cb9f;
+    color: var(--forecolor);
+    background-color: var(--maincolor);
     padding:15px;
 }
 input{
@@ -51,17 +73,26 @@ input{
     margin:5px;
 }
 
+#feed {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
 .reviewcard {
-    border:5px solid black;
+    width:1000px;
+    max-width:98%;
+    border-radius:30px;
+    border:15px solid black;
     margin:5px;
+    padding:0;
 }
 .reviewcard header {
-    height:60px;
-    background-color:black;
-    color:white;
+    height:80px;
+    background-color:var(--maincolor);
+    color:var(--forecolor);
 }
 .reviewcard header h2 {
-    margin:12px;
+    margin:5px;
     float:left;
 }
 .reviewcard header p {
@@ -69,9 +100,15 @@ input{
 }
 .reviewcard>p {
     margin:10px;
+    color:var(--forecolor);
 }
 .reviewcard>p:nth-of-type(2) {
     font-style:italic;
+}
+
+.center-inside {
+    display:flex;
+    justify-content: center;
 }
 
 #loginEmail {
@@ -90,13 +127,69 @@ input{
     margin: 10px;
 }
 
-.signUpForm {
+#signUpForm {
     border-radius: 10px;
     padding: 5px 15px 5px 15px;
     margin: 10px;
+    margin-top:50px;
+    background-color: white;
 }
 #signUpBtn{
     border-radius: 10px;
     padding: 5px 15px 5px 15px;
     margin: 10px;
 }
+
+.mycontentarea {
+    margin:50px 0;
+    border-radius:20px;
+    background-color: var(--maincolor);
+    width:700px;
+}
+
+#profilearea>* {
+    margin:10px;
+    color:var(--forecolor);
+}
+
+#update-profile>* {
+    margin:10px;
+}
+#update-profile label, #update-profile h3 {
+    color:var(--forecolor);
+}
+#update-profile hr {
+    color:gray;
+}
+
+#addreviewform {
+    text-align:center;
+}
+#addreviewform>* {
+    margin:10px;
+}
+#addreviewform textarea {
+    resize:none;
+    width:600px;
+    height:200px;
+}
+#addreviewform label {
+    color:var(--forecolor);
+}
+#ratingcheckboxes label {
+    display: inline-block;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    background: url("/img/emptystar.png");
+  }
+  #ratingcheckboxes input[type=checkbox]:checked + label {
+    content:"";
+    background: url("/img/fullstar.png");
+  }
+  #ratingcheckboxes input[type=checkbox] {
+    display:none;
+  }
+  #ratingcheckboxes label:hover {
+    cursor:pointer;
+  }
