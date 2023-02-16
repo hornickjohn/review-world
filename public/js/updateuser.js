@@ -27,7 +27,7 @@ document.querySelector("#update-profile").addEventListener('submit',event=>{
            location.href="/profile";
         } else {
             console.log(res);
-            alert("Sign up failed.");
+            alert("Update failed.");
         }
     });
 });
