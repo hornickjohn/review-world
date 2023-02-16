@@ -76,7 +76,15 @@ router.get("/profile",async (req,res)=>{
         where:{
             id: req.session.userId
         },  
-        include:[Review]
+        include:[{
+            model:Review,
+            include:[{
+                model:Product,
+                include:[{
+                    model:Category
+                }]
+            }]
+        }]
     }).then(userData=>{
         if(userData) {
             let hbsUserData = userData.toJSON();
