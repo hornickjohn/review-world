@@ -15,6 +15,10 @@ body {
     background-color:var(--backingcolor);
 }
 
+.forecolor {
+    color:var(--forecolor);
+}
+
 h1{
     text-align: center;
     color: var(--forecolor);
