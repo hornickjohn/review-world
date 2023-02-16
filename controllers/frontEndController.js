@@ -57,7 +57,10 @@ router.get("/profile/:username",async (req,res)=>{
                 include:[{
                     model:Category
                 }]
-            }]
+            }],
+            order: [
+                ['createdAt', 'DESC']
+            ]
         }]
     }).then(userData=>{
         if(userData) {
@@ -209,6 +212,7 @@ router.get("/search",async (req,res)=>{
             include: [ User,
                 {
                     model:Product,
+                    where: {},
                     include: [ 
                         {
                             model:Category,
@@ -255,6 +259,7 @@ router.get("/search",async (req,res)=>{
             include: [ User,
                 {
                     model:Product,
+                    where: {},
                     include: [ 
                         {
                             model:Category
@@ -292,6 +297,7 @@ router.get("/search",async (req,res)=>{
             include: [ User,
                 {
                     model:Product,
+                    where: {},
                     include: [ 
                         {
                             model:Category,
@@ -312,6 +318,7 @@ router.get("/search",async (req,res)=>{
             include: [ User,
                 {
                     model:Product,
+                    where: {},
                     include: [ 
                         {
                             model:Category
@@ -327,7 +334,6 @@ router.get("/search",async (req,res)=>{
     }
 
     const revData = await Review.findAll(P).catch(err=>{console.log(err);});
-    console.log(revData);
     const hbsSearchReviews = revData.map(dat=>dat.toJSON());
 
     res.render("search", { currentUserData, reviewData:hbsSearchReviews, categoryData });
