@@ -1,18 +1,31 @@
-<form id="addreviewform">
-    <label for="categories">Category:</label>
-    <select id="categories">
-        {{#each categoryData}}
-        <option value="{{this.id}}">{{this.name}}</option>
-        {{/each}}
-    </select>
-    <input id="product">
-    <input id="star1" type="checkbox">
-    <input id="star2" type="checkbox">
-    <input id="star3" type="checkbox">
-    <input id="star4" type="checkbox">
-    <input id="star5" type="checkbox">
-    <textarea id="review" placeholder="Type your review here..."></textarea>
-    <input type="submit">
-</form>
+<div class="center-inside">
+    <form id="addreviewform" class="mycontentarea">
+        <label for="categories">Category:</label>
+        <select id="categories">
+            {{#each categoryData}}
+            <option value="{{this.id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <label for="product">Product Name</label>
+        <input id="product">
+        <label for="star1"></label>
+        <div id="ratingcheckboxes">
+            <input id="star1" type="checkbox" checked>
+            <label for="star1"></label>
+            <input id="star2" type="checkbox">
+            <label for="star2"></label>
+            <input id="star3" type="checkbox">
+            <label for="star3"></label>
+            <input id="star4" type="checkbox">
+            <label for="star4"></label>
+            <input id="star5" type="checkbox">
+            <label for="star5"></label>
+        </div>
+        <textarea id="review" maxlength="2000" placeholder="Type your review here..."></textarea>
+        <br>
+        <input type="submit">
+    </form>
+</div>
 
 <script src="/js/addreview.js"></script>

@@ -1,7 +1,33 @@
-<p>
-{{#if userData.showname}}
-    {{userData.first_name}} {{userData.last_name}}
-{{else}}
-    {{userData.username}}
-{{/if}}
-</p>
+<div class="center-inside">
+    <div id="profilearea" class="mycontentarea">
+        <h2>
+        {{#if userData.showname}}
+            {{userData.first_name}} {{userData.last_name}}
+        {{else}}
+            {{userData.username}}
+        {{/if}}
+        </h2>
+        <p>Account Created: {{userData.createdAt}}</p>
+        <p></p>
+    </div>
+</div>
+
+<div class="center-inside">
+    <h2>{{#if userData.showname}}{{userData.first_name}}{{else}}{{userData.username}}{{/if}}'s Latest Reviews</h2>
+</div>
+<div id="feed">
+    {{#each userData.reviews}}
+        <div class="reviewcard">
+            <header>
+                <h2>{{this.product.name}} ({{this.product.category.name}})</h2>
+                <p>{{this.rating}} stars</p>
+            </header>
+            {{#if this.User.showname}}
+                <p>Posted by <a href="/profile/{{this.user.username}}">{{this.user.first_name}} {{this.user.last_name}}</a></p>
+            {{else}}
+                <p>Posted by <a href="/profile/{{this.user.username}}">{{this.user.username}}</a></p>
+            {{/if}}
+            <p>{{this.reviewText}}</p>
+        </div>
+    {{/each}}
+</div>
