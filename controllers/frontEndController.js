@@ -50,32 +50,6 @@ router.get("/profile/:username",async (req,res)=>{
         where:{
             username: req.params.username
         },  
-        include:[Review]
-    }).then(userData=>{
-        if(userData) {
-            let hbsUserData = userData.toJSON();
-            res.render("profile", {
-                currentUserData,
-                userData:hbsUserData,
-                categoryData
-            });
-        } else {
-            res.status(404).json('User not found.');
-        }
-    }).catch(err=>{
-        res.status(500).json('Server error.');
-    });
-});
-
-router.get("/profile",async (req,res)=>{
-    if(!ensureLogin (req, res)) return;
-    const currentUserData = await getUserData(req);
-    const categoryDataRaw = await Category.findAll();
-    const categoryData = categoryDataRaw.map(category => category.toJSON());
-    User.findOne({
-        where:{
-            id: req.session.userId
-        },  
         include:[{
             model:Review,
             include:[{
@@ -99,6 +73,12 @@ router.get("/profile",async (req,res)=>{
     }).catch(err=>{
         res.status(500).json('Server error.');
     });
+});
+
+router.get("/profile",async (req,res)=>{
+    if(!ensureLogin (req, res)) return;
+    const currentUserData = await getUserData(req);
+    res.redirect("/profile/" + currentUserData.username);
 });
 
 router.get("/addreview",async (req,res)=>{
